@@ -1,0 +1,13 @@
+---
+- name: Configure demo ansible Controllwer 
+  hosts: localhost
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: Configure Ansible Controller Projects
+      ansible.controller.project:
+        name: "Foo"
+        description: "Foo bar project"
+        organization: "Default"
+        state: present

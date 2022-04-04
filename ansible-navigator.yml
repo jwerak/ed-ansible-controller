@@ -1,0 +1,15 @@
+---
+ansible-navigator:
+  execution-environment:
+    environment-variables:
+      pass:
+        - CONTROLLER_HOST
+        - CONTROLLER_OAUTH_TOKEN
+    image: registry.redhat.io/ansible-automation-platform-21/ee-supported-rhel8:latest
+  logging:
+    level: debug
+    file: /tmp/ansible_homelab.log
+  playbook-artifact:
+    enable: False
+    replay: /tmp/ansible_homelab_artifact.json
+    save-as: /tmp/ansible_homelab_artifact.json
