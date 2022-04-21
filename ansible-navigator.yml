@@ -7,7 +7,6 @@ ansible-navigator:
         - CONTROLLER_OAUTH_TOKEN
     image: registry.redhat.io/ansible-automation-platform-21/ee-supported-rhel8:latest
   logging:
-    level: debug
     file: /tmp/ansible_homelab.log
   playbook-artifact:
     enable: False

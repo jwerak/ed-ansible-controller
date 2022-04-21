@@ -1,13 +1,57 @@
 ---
-- name: Configure demo ansible Controllwer 
+- name: Configure demo ansible Controller 
   hosts: localhost
   become: false
   gather_facts: false
 
+  vars:
+    inventory_groups:
+      - name: dev
+        hosts:
+          - node1
+        variables: 
+          environment: dev
+      - name: prod
+        hosts:
+          - node2
+          - node3
+        variables: 
+          environment: prod
+    job_templates:
+      - name: INFRASTRUCTURE / Server Base Setup
+        playbook: server-base.yml
+      - name: INFRASTRUCTURE / Podman Setup
+        playbook: podman-setup.yml
+      - name: DEV / Podman App Deploy
+        playbook: podman-app.yml
+        ask_limit_on_launch: true
+
   tasks:
-    - name: Configure Ansible Controller Projects
+    - name: Configure Ansible Controller Demo Project
       ansible.controller.project:
-        name: "Foo"
-        description: "Foo bar project"
+        name: Demo app
         organization: "Default"
         state: present
+        update_project: true
+        scm_update_on_launch: true
+        scm_type: git
+        scm_url: https://github.com/jwerak/ed-ansible-project.git
+        scm_branch: main
+
+    - name: Configure Inventory groups
+      ansible.controller.group:
+        name: "{{ item.name }}"
+        inventory: Workshop Inventory
+        hosts: "{{ item.hosts }}" 
+        variables: "{{ item.variables }}" 
+      loop: "{{ inventory_groups }}"
+
+    - name: Configure Ansible Controller Exmample Job Template
+      ansible.controller.job_template:
+        name: "{{ item.name }}"
+        inventory: Workshop Inventory
+        project: Demo app
+        playbook: "{{ item.playbook }}"
+        credential: Workshop Credential
+        ask_limit_on_launch: "{{ item.ask_limit_on_launch | default(omit) }}"
+      loop: "{{ job_templates }}"
