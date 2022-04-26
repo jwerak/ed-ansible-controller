@@ -1,0 +1,450 @@
+---
+workflow_job_templates:
+-   ask_limit_on_launch: true
+    limit: edge-all
+    name: INFRASTRUCTURE / New Edge server
+    related:
+        labels: []
+        notification_templates_approvals: []
+        notification_templates_error: []
+        notification_templates_started: []
+        notification_templates_success: []
+        schedules: []
+        survey_spec: {}
+        workflow_nodes:
+        -   all_parents_must_converge: false
+            diff_mode: null
+            extra_data: {}
+            identifier: 5a67b5f4-bd79-4251-b9f3-44ea1130a28c
+            inventory: null
+            job_tags: null
+            job_type: null
+            limit: null
+            natural_key:
+                identifier: 5a67b5f4-bd79-4251-b9f3-44ea1130a28c
+                type: workflow_job_template_node
+                workflow_job_template:
+                    name: INFRASTRUCTURE / New Edge
+                        server
+                    organization: null
+                    type: workflow_job_template
+            related:
+                always_nodes: []
+                credentials: []
+                failure_nodes: []
+                success_nodes:
+                -   identifier: 98a5d2aa-cf6f-485f-873c-0fc6939587c9
+                    type: workflow_job_template_node
+                    workflow_job_template:
+                        name: INFRASTRUCTURE / New Edge
+                            server
+                        organization: null
+                        type: workflow_job_template
+            scm_branch: null
+            skip_tags: null
+            unified_job_template:
+                name: INFRASTRUCTURE / Podman Setup
+                organization:
+                    name: Default
+                    type: organization
+                type: job_template
+            verbosity: null
+            workflow_job_template:
+                name: INFRASTRUCTURE / New Edge server
+                organization: null
+                type: workflow_job_template
+        -   all_parents_must_converge: false
+            diff_mode: null
+            extra_data: {}
+            identifier: 42def399-cfd2-488c-8574-ecc34c392deb
+            inventory: null
+            job_tags: null
+            job_type: null
+            limit: null
+            natural_key:
+                identifier: 42def399-cfd2-488c-8574-ecc34c392deb
+                type: workflow_job_template_node
+                workflow_job_template:
+                    name: INFRASTRUCTURE / New Edge
+                        server
+                    organization: null
+                    type: workflow_job_template
+            related:
+                always_nodes: []
+                credentials: []
+                failure_nodes: []
+                success_nodes:
+                -   identifier: 5a67b5f4-bd79-4251-b9f3-44ea1130a28c
+                    type: workflow_job_template_node
+                    workflow_job_template:
+                        name: INFRASTRUCTURE / New Edge
+                            server
+                        organization: null
+                        type: workflow_job_template
+            scm_branch: null
+            skip_tags: null
+            unified_job_template:
+                name: INFRASTRUCTURE / Server Base Setup
+                organization:
+                    name: Default
+                    type: organization
+                type: job_template
+            verbosity: null
+            workflow_job_template:
+                name: INFRASTRUCTURE / New Edge server
+                organization: null
+                type: workflow_job_template
+        -   all_parents_must_converge: false
+            diff_mode: null
+            extra_data: {}
+            identifier: 98a5d2aa-cf6f-485f-873c-0fc6939587c9
+            inventory: null
+            job_tags: null
+            job_type: null
+            limit: edge-all
+            natural_key:
+                identifier: 98a5d2aa-cf6f-485f-873c-0fc6939587c9
+                type: workflow_job_template_node
+                workflow_job_template:
+                    name: INFRASTRUCTURE / New Edge
+                        server
+                    organization: null
+                    type: workflow_job_template
+            related:
+                always_nodes: []
+                credentials: []
+                failure_nodes: []
+                success_nodes:
+                -   identifier: 6daa2a21-8efa-499d-824f-eb0af39dd4da
+                    type: workflow_job_template_node
+                    workflow_job_template:
+                        name: INFRASTRUCTURE / New Edge
+                            server
+                        organization: null
+                        type: workflow_job_template
+            scm_branch: null
+            skip_tags: null
+            unified_job_template:
+                name: DEV / Podman App Deploy
+                organization:
+                    name: Default
+                    type: organization
+                type: job_template
+            verbosity: null
+            workflow_job_template:
+                name: INFRASTRUCTURE / New Edge server
+                organization: null
+                type: workflow_job_template
+        -   all_parents_must_converge: false
+            diff_mode: null
+            extra_data: {}
+            identifier: 6daa2a21-8efa-499d-824f-eb0af39dd4da
+            inventory: null
+            job_tags: null
+            job_type: null
+            limit: edge-all
+            natural_key:
+                identifier: 6daa2a21-8efa-499d-824f-eb0af39dd4da
+                type: workflow_job_template_node
+                workflow_job_template:
+                    name: INFRASTRUCTURE / New Edge
+                        server
+                    organization: null
+                    type: workflow_job_template
+            related:
+                always_nodes: []
+                credentials: []
+                failure_nodes: []
+                success_nodes: []
+            scm_branch: null
+            skip_tags: null
+            unified_job_template:
+                name: DEV / Smoke Test App
+                organization:
+                    name: Default
+                    type: organization
+                type: job_template
+            verbosity: null
+            workflow_job_template:
+                name: INFRASTRUCTURE / New Edge server
+                organization: null
+                type: workflow_job_template
+    scm_branch: null
+    survey_enabled: false
+    webhook_credential: null
+    webhook_service: ''
+-   ask_limit_on_launch: false
+    limit: edge-all
+    name: DEV / Roll out Application
+    related:
+        labels: []
+        notification_templates_approvals: []
+        notification_templates_error: []
+        notification_templates_started: []
+        notification_templates_success: []
+        schedules: []
+        survey_spec:
+            description: ''
+            name: ''
+            spec:
+            -   choices: ''
+                default: ''
+                max: 1024
+                min: 0
+                new_question: true
+                question_description: ''
+                question_name: Application Version
+                required: true
+                type: text
+                variable: application_version
+        workflow_nodes:
+        -   all_parents_must_converge: false
+            diff_mode: null
+            extra_data:
+                application_version: 0.0.2
+                environment_name: dev
+            identifier: 036d0d3e-4561-4020-9ab8-5a23a82d10b1
+            inventory: null
+            job_tags: null
+            job_type: null
+            limit: null
+            natural_key:
+                identifier: 036d0d3e-4561-4020-9ab8-5a23a82d10b1
+                type: workflow_job_template_node
+                workflow_job_template:
+                    name: DEV / Roll out Application
+                        Version
+                    organization: null
+                    type: workflow_job_template
+            related:
+                always_nodes: []
+                credentials: []
+                failure_nodes: []
+                success_nodes:
+                -   identifier: 71b51204-e3bf-4429-b3f3-436530a1d6b2
+                    type: workflow_job_template_node
+                    workflow_job_template:
+                        name: DEV / Roll out Application
+                            Version
+                        organization: null
+                        type: workflow_job_template
+            scm_branch: null
+            skip_tags: null
+            unified_job_template:
+                name: DEV / Set Application Version
+                organization:
+                    name: Default
+                    type: organization
+                type: job_template
+            verbosity: null
+            workflow_job_template:
+                name: DEV / Roll out Application Version
+                organization: null
+                type: workflow_job_template
+        -   all_parents_must_converge: false
+            diff_mode: null
+            extra_data:
+                target_hosts: dev
+            identifier: 71b51204-e3bf-4429-b3f3-436530a1d6b2
+            inventory: null
+            job_tags: null
+            job_type: null
+            limit: null
+            natural_key:
+                identifier: 71b51204-e3bf-4429-b3f3-436530a1d6b2
+                type: workflow_job_template_node
+                workflow_job_template:
+                    name: DEV / Roll out Application
+                        Version
+                    organization: null
+                    type: workflow_job_template
+            related:
+                always_nodes: []
+                credentials: []
+                failure_nodes: []
+                success_nodes:
+                -   identifier: 35336ae8-f272-4e81-bc64-4fd4eb00d67d
+                    type: workflow_job_template_node
+                    workflow_job_template:
+                        name: DEV / Roll out Application
+                            Version
+                        organization: null
+                        type: workflow_job_template
+            scm_branch: null
+            skip_tags: null
+            unified_job_template:
+                name: DEV / Podman App Deploy
+                organization:
+                    name: Default
+                    type: organization
+                type: job_template
+            verbosity: null
+            workflow_job_template:
+                name: DEV / Roll out Application Version
+                organization: null
+                type: workflow_job_template
+        -   all_parents_must_converge: false
+            diff_mode: null
+            extra_data: {}
+            identifier: 35336ae8-f272-4e81-bc64-4fd4eb00d67d
+            inventory: null
+            job_tags: null
+            job_type: null
+            limit: dev
+            natural_key:
+                identifier: 35336ae8-f272-4e81-bc64-4fd4eb00d67d
+                type: workflow_job_template_node
+                workflow_job_template:
+                    name: DEV / Roll out Application
+                        Version
+                    organization: null
+                    type: workflow_job_template
+            related:
+                always_nodes: []
+                credentials: []
+                failure_nodes: []
+                success_nodes:
+                -   identifier: 918a98b6-e789-4440-ad24-a0e34bc4a075
+                    type: workflow_job_template_node
+                    workflow_job_template:
+                        name: DEV / Roll out Application
+                            Version
+                        organization: null
+                        type: workflow_job_template
+            scm_branch: null
+            skip_tags: null
+            unified_job_template:
+                name: DEV / Smoke Test App
+                organization:
+                    name: Default
+                    type: organization
+                type: job_template
+            verbosity: null
+            workflow_job_template:
+                name: DEV / Roll out Application Version
+                organization: null
+                type: workflow_job_template
+        -   all_parents_must_converge: false
+            diff_mode: null
+            extra_data:
+                application_version: 0.0.2
+                environment_name: prod
+            identifier: 918a98b6-e789-4440-ad24-a0e34bc4a075
+            inventory: null
+            job_tags: null
+            job_type: null
+            limit: null
+            natural_key:
+                identifier: 918a98b6-e789-4440-ad24-a0e34bc4a075
+                type: workflow_job_template_node
+                workflow_job_template:
+                    name: DEV / Roll out Application
+                        Version
+                    organization: null
+                    type: workflow_job_template
+            related:
+                always_nodes: []
+                credentials: []
+                failure_nodes: []
+                success_nodes:
+                -   identifier: 70beab79-4238-4e3d-a396-5629c28be358
+                    type: workflow_job_template_node
+                    workflow_job_template:
+                        name: DEV / Roll out Application
+                            Version
+                        organization: null
+                        type: workflow_job_template
+            scm_branch: null
+            skip_tags: null
+            unified_job_template:
+                name: DEV / Set Application Version
+                organization:
+                    name: Default
+                    type: organization
+                type: job_template
+            verbosity: null
+            workflow_job_template:
+                name: DEV / Roll out Application Version
+                organization: null
+                type: workflow_job_template
+        -   all_parents_must_converge: false
+            diff_mode: null
+            extra_data: {}
+            identifier: e6ef5db9-aa94-405c-ac5d-4dbc54806c04
+            inventory: null
+            job_tags: null
+            job_type: null
+            limit: prod
+            natural_key:
+                identifier: e6ef5db9-aa94-405c-ac5d-4dbc54806c04
+                type: workflow_job_template_node
+                workflow_job_template:
+                    name: DEV / Roll out Application
+                        Version
+                    organization: null
+                    type: workflow_job_template
+            related:
+                always_nodes: []
+                credentials: []
+                failure_nodes: []
+                success_nodes: []
+            scm_branch: null
+            skip_tags: null
+            unified_job_template:
+                name: DEV / Smoke Test App
+                organization:
+                    name: Default
+                    type: organization
+                type: job_template
+            verbosity: null
+            workflow_job_template:
+                name: DEV / Roll out Application Version
+                organization: null
+                type: workflow_job_template
+        -   all_parents_must_converge: false
+            diff_mode: null
+            extra_data:
+                target_hosts: prod
+            identifier: 70beab79-4238-4e3d-a396-5629c28be358
+            inventory: null
+            job_tags: null
+            job_type: null
+            limit: null
+            natural_key:
+                identifier: 70beab79-4238-4e3d-a396-5629c28be358
+                type: workflow_job_template_node
+                workflow_job_template:
+                    name: DEV / Roll out Application
+                        Version
+                    organization: null
+                    type: workflow_job_template
+            related:
+                always_nodes: []
+                credentials: []
+                failure_nodes: []
+                success_nodes:
+                -   identifier: e6ef5db9-aa94-405c-ac5d-4dbc54806c04
+                    type: workflow_job_template_node
+                    workflow_job_template:
+                        name: DEV / Roll out Application
+                            Version
+                        organization: null
+                        type: workflow_job_template
+            scm_branch: null
+            skip_tags: null
+            unified_job_template:
+                name: DEV / Podman App Deploy
+                organization:
+                    name: Default
+                    type: organization
+                type: job_template
+            verbosity: null
+            workflow_job_template:
+                name: DEV / Roll out Application Version
+                organization: null
+                type: workflow_job_template
+    scm_branch: ''
+    survey_enabled: true
+    webhook_credential: null
+    webhook_service: ''
+...

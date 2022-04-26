@@ -1,0 +1,20 @@
+{
+    "name": "Set Application Version in Group",
+    "description": "Survey for setting of Version for given Group",
+    "spec": [
+        {
+            "type": "text",
+            "question_name": "application_version",
+            "question_description": "What Version to deploy (container tag)",
+            "variable": "application_version",
+            "required": true
+        },
+        {
+            "type": "text",
+            "question_name": "environment_name",
+            "question_description": "What Environment to update",
+            "variable": "environment_name",
+            "required": true
+        }
+    ]
+}

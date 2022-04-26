@@ -3,17 +3,33 @@
   hosts: localhost
   connection: local
   gather_facts: false
- 
+  
+  vars:
+    workflow_exports:
+      - name: INFRASTRUCTURE / New Edge server
+        filename: workflow-new-edge-server.yml
+      - name: DEV / Roll out Application Version
+        filename: workflow-rollout-application.yml
   tasks:
     - name: Export workflow job template
       ansible.controller.export:
-        workflow_job_templates: APP / Rollout Edge Application
+        workflow_job_templates: "{{ item.name }}"
       register: export_results
-
-    - debug:
-        var: export_results
+      loop: "{{ workflow_exports }}"
 
     - name: Export workflow job template to file
-      copy:
-        content: "{{ export_results | to_nice_yaml( width=50, explicit_start=True, explicit_end=True) }}"
-        dest: workflow.yaml
+      ansible.builtin.copy:
+        content: "{{ item.assets | to_nice_yaml( width=50, explicit_start=True, explicit_end=True) }}"
+        dest: "{{ item.item.filename }}"
+      loop: "{{ export_results.results }}"
+
+    # - name: Export workflow job template
+    #   ansible.controller.export:
+    #     workflow_job_templates: APP / Rollout Edge Application
+    #   register: export_results
+
+    # - name: Export workflow job template to file
+    #   copy:
+    #     content: "{{ export_results | to_nice_yaml( width=50, explicit_start=True, explicit_end=True) }}"
+    #     dest: workflow.yaml
+

@@ -1,0 +1,13 @@
+{
+    "name": "Deploy podman app",
+    "description": "Survey for Deployment of a Podman Application",
+    "spec": [
+        {
+            "type": "text",
+            "question_name": "target_hosts",
+            "question_description": "Target Hosts or Group",
+            "variable": "target_hosts",
+            "required": true
+        }
+    ]
+}
