@@ -1,0 +1,13 @@
+{
+    "name": "Podman Application Deploy",
+    "description": "Survey for deployment of Podman application on Edge devices",
+    "spec": [
+        {
+        "type": "text",
+        "question_name": "application_version",
+        "question_description": "What Version to deploy (container tag)",
+        "variable": "application_version",
+        "required": true
+        }
+    ]
+}

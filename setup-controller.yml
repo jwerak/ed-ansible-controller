@@ -4,26 +4,42 @@
   become: false
   gather_facts: false
 
+  vars_files:
+    - vars/workflow-server-rollout.yml
   vars:
     inventory_groups:
       - name: dev
         hosts:
           - node1
         variables: 
-          environment: dev
+          environment_name: dev
+          application_version: 0.0.2
       - name: prod
         hosts:
           - node2
           - node3
         variables: 
-          environment: prod
+          environment_name: prod
+          application_version: 0.0.1
+      - name: edge-all 
+        children:
+          - dev
+          - prod
     job_templates:
       - name: INFRASTRUCTURE / Server Base Setup
         playbook: server-base.yml
+        limit: edge-all
       - name: INFRASTRUCTURE / Podman Setup
         playbook: podman-setup.yml
+        limit: edge-all
       - name: DEV / Podman App Deploy
         playbook: podman-app.yml
+        limit: edge-all
+        ask_limit_on_launch: true
+        survey_spec_file: templates/podman-app-survey.json
+      - name: DEV / Smoke Test App
+        playbook: smoke-test-app.yml
+        limit: edge-all
         ask_limit_on_launch: true
 
   tasks:
@@ -42,11 +58,12 @@
       ansible.controller.group:
         name: "{{ item.name }}"
         inventory: Workshop Inventory
-        hosts: "{{ item.hosts }}" 
-        variables: "{{ item.variables }}" 
-      loop: "{{ inventory_groups }}"
+        hosts: "{{ item.hosts | default(omit) }}"
+        variables: "{{ item.variables | default(omit) }}"
+        children: "{{ item.children | default(omit) }}"
+      loop: "{{ inventory_groups | default(omit) }}"
 
-    - name: Configure Ansible Controller Exmample Job Template
+    - name: Configure Ansible Controller Job Templates
       ansible.controller.job_template:
         name: "{{ item.name }}"
         inventory: Workshop Inventory
@@ -54,4 +71,17 @@
         playbook: "{{ item.playbook }}"
         credential: Workshop Credential
         ask_limit_on_launch: "{{ item.ask_limit_on_launch | default(omit) }}"
+        limit: "{{ item.limit | default(omit) }}"
+        # survey_spec: "{{ lookup('file', item.survey_spec_file  | default(omit), errors='ignore') | default(omit, true) }}"
+        # survey_enabled: true
       loop: "{{ job_templates }}"
+
+    - name: Configure Workflow Job Template
+      ansible.controller.workflow_job_template:
+        name: "{{ __workflow_loop_item.name }}"
+        schema: "{{ __workflow_loop_item.related.workflow_nodes }}"
+        limit: edge-all
+        ask_limit_on_launch: true
+      loop: "{{ workflow_job_templates }}"
+      loop_control:
+        loop_var: __workflow_loop_item
