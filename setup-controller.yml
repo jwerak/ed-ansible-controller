@@ -39,11 +39,11 @@
       - name: DEV / Podman App Deploy
         playbook: podman-app.yml
         limit: edge-all
-        survey: templates/podman-app-deploy-survey.json
+        survey_spec_file: templates/podman-app-deploy-survey.json
       - name: DEV / Smoke Test App
         playbook: smoke-test-app.yml
         limit: edge-all
-        survey: templates/smoke-test-survey.json
+        survey_spec_file: templates/smoke-test-survey.json
       - name: DEV / Set Application Version
         playbook: set-version.yml
         survey_spec_file: templates/set-version-survey.json
@@ -86,16 +86,6 @@
         survey_spec: "{{ lookup('file', item.survey_spec_file  | default(omit), errors='ignore') | default(omit, true) }}"
         survey_enabled: true
       loop: "{{ job_templates }}"
-
-    # - name: Configure Workflow Job Template
-    #   ansible.controller.workflow_job_template:
-    #     name: "{{ __workflow_loop_item.name }}"
-    #     schema: "{{ __workflow_loop_item.related.workflow_nodes }}"
-    #     limit: edge-all
-    #     ask_limit_on_launch: true
-    #   loop: "{{ workflow_job_templates }}"
-    #   loop_control:
-    #     loop_var: __workflow_loop_item
     
     - name: Configure Workflow Job Templates
       ansible.controller.workflow_job_template:

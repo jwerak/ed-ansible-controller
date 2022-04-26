@@ -174,8 +174,9 @@ workflow_job_templates:
     webhook_credential: null
     webhook_service: ''
 -   ask_limit_on_launch: false
-    limit: edge-all
-    name: DEV / Roll out Application
+    description: Deploy new application to all stages
+    limit: ''
+    name: DEV / Release Application Version
     related:
         labels: []
         notification_templates_approvals: []
@@ -192,7 +193,8 @@ workflow_job_templates:
                 max: 1024
                 min: 0
                 new_question: true
-                question_description: ''
+                question_description: Version of application
+                    to be released
                 question_name: Application Version
                 required: true
                 type: text
@@ -201,60 +203,17 @@ workflow_job_templates:
         -   all_parents_must_converge: false
             diff_mode: null
             extra_data:
-                application_version: 0.0.2
-                environment_name: dev
-            identifier: 036d0d3e-4561-4020-9ab8-5a23a82d10b1
-            inventory: null
-            job_tags: null
-            job_type: null
-            limit: null
-            natural_key:
-                identifier: 036d0d3e-4561-4020-9ab8-5a23a82d10b1
-                type: workflow_job_template_node
-                workflow_job_template:
-                    name: DEV / Roll out Application
-                        Version
-                    organization: null
-                    type: workflow_job_template
-            related:
-                always_nodes: []
-                credentials: []
-                failure_nodes: []
-                success_nodes:
-                -   identifier: 71b51204-e3bf-4429-b3f3-436530a1d6b2
-                    type: workflow_job_template_node
-                    workflow_job_template:
-                        name: DEV / Roll out Application
-                            Version
-                        organization: null
-                        type: workflow_job_template
-            scm_branch: null
-            skip_tags: null
-            unified_job_template:
-                name: DEV / Set Application Version
-                organization:
-                    name: Default
-                    type: organization
-                type: job_template
-            verbosity: null
-            workflow_job_template:
-                name: DEV / Roll out Application Version
-                organization: null
-                type: workflow_job_template
-        -   all_parents_must_converge: false
-            diff_mode: null
-            extra_data:
                 target_hosts: dev
-            identifier: 71b51204-e3bf-4429-b3f3-436530a1d6b2
+            identifier: 18260938-f807-4406-9c82-2c182c123b79
             inventory: null
             job_tags: null
             job_type: null
             limit: null
             natural_key:
-                identifier: 71b51204-e3bf-4429-b3f3-436530a1d6b2
+                identifier: 18260938-f807-4406-9c82-2c182c123b79
                 type: workflow_job_template_node
                 workflow_job_template:
-                    name: DEV / Roll out Application
+                    name: DEV / Release Application
                         Version
                     organization: null
                     type: workflow_job_template
@@ -263,51 +222,10 @@ workflow_job_templates:
                 credentials: []
                 failure_nodes: []
                 success_nodes:
-                -   identifier: 35336ae8-f272-4e81-bc64-4fd4eb00d67d
+                -   identifier: 904df446-10a7-4670-970c-8c0d05519554
                     type: workflow_job_template_node
                     workflow_job_template:
-                        name: DEV / Roll out Application
-                            Version
-                        organization: null
-                        type: workflow_job_template
-            scm_branch: null
-            skip_tags: null
-            unified_job_template:
-                name: DEV / Podman App Deploy
-                organization:
-                    name: Default
-                    type: organization
-                type: job_template
-            verbosity: null
-            workflow_job_template:
-                name: DEV / Roll out Application Version
-                organization: null
-                type: workflow_job_template
-        -   all_parents_must_converge: false
-            diff_mode: null
-            extra_data: {}
-            identifier: 35336ae8-f272-4e81-bc64-4fd4eb00d67d
-            inventory: null
-            job_tags: null
-            job_type: null
-            limit: dev
-            natural_key:
-                identifier: 35336ae8-f272-4e81-bc64-4fd4eb00d67d
-                type: workflow_job_template_node
-                workflow_job_template:
-                    name: DEV / Roll out Application
-                        Version
-                    organization: null
-                    type: workflow_job_template
-            related:
-                always_nodes: []
-                credentials: []
-                failure_nodes: []
-                success_nodes:
-                -   identifier: 918a98b6-e789-4440-ad24-a0e34bc4a075
-                    type: workflow_job_template_node
-                    workflow_job_template:
-                        name: DEV / Roll out Application
+                        name: DEV / Release Application
                             Version
                         organization: null
                         type: workflow_job_template
@@ -321,24 +239,24 @@ workflow_job_templates:
                 type: job_template
             verbosity: null
             workflow_job_template:
-                name: DEV / Roll out Application Version
+                name: DEV / Release Application Version
                 organization: null
                 type: workflow_job_template
         -   all_parents_must_converge: false
             diff_mode: null
             extra_data:
-                application_version: 0.0.2
-                environment_name: prod
-            identifier: 918a98b6-e789-4440-ad24-a0e34bc4a075
+                application_version: 0.0.1
+                environment_name: dev
+            identifier: 00d9c7a0-754d-4504-9356-73211f920735
             inventory: null
             job_tags: null
             job_type: null
             limit: null
             natural_key:
-                identifier: 918a98b6-e789-4440-ad24-a0e34bc4a075
+                identifier: 00d9c7a0-754d-4504-9356-73211f920735
                 type: workflow_job_template_node
                 workflow_job_template:
-                    name: DEV / Roll out Application
+                    name: DEV / Release Application
                         Version
                     organization: null
                     type: workflow_job_template
@@ -347,10 +265,10 @@ workflow_job_templates:
                 credentials: []
                 failure_nodes: []
                 success_nodes:
-                -   identifier: 70beab79-4238-4e3d-a396-5629c28be358
+                -   identifier: 0dd94dbb-e30e-4273-9dc8-ffba7cbb1674
                     type: workflow_job_template_node
                     workflow_job_template:
-                        name: DEV / Roll out Application
+                        name: DEV / Release Application
                             Version
                         organization: null
                         type: workflow_job_template
@@ -364,22 +282,108 @@ workflow_job_templates:
                 type: job_template
             verbosity: null
             workflow_job_template:
-                name: DEV / Roll out Application Version
+                name: DEV / Release Application Version
                 organization: null
                 type: workflow_job_template
         -   all_parents_must_converge: false
             diff_mode: null
-            extra_data: {}
-            identifier: e6ef5db9-aa94-405c-ac5d-4dbc54806c04
+            extra_data:
+                target_hosts: prod
+            identifier: db7db8e9-bb87-4549-ad3d-ce72f8470860
             inventory: null
             job_tags: null
             job_type: null
-            limit: prod
+            limit: null
             natural_key:
-                identifier: e6ef5db9-aa94-405c-ac5d-4dbc54806c04
+                identifier: db7db8e9-bb87-4549-ad3d-ce72f8470860
                 type: workflow_job_template_node
                 workflow_job_template:
-                    name: DEV / Roll out Application
+                    name: DEV / Release Application
+                        Version
+                    organization: null
+                    type: workflow_job_template
+            related:
+                always_nodes: []
+                credentials: []
+                failure_nodes: []
+                success_nodes:
+                -   identifier: abfa6fa5-4e7e-4cce-9c4a-df2576dcb1d0
+                    type: workflow_job_template_node
+                    workflow_job_template:
+                        name: DEV / Release Application
+                            Version
+                        organization: null
+                        type: workflow_job_template
+            scm_branch: null
+            skip_tags: null
+            unified_job_template:
+                name: DEV / Podman App Deploy
+                organization:
+                    name: Default
+                    type: organization
+                type: job_template
+            verbosity: null
+            workflow_job_template:
+                name: DEV / Release Application Version
+                organization: null
+                type: workflow_job_template
+        -   all_parents_must_converge: false
+            diff_mode: null
+            extra_data:
+                application_version: 0.0.1
+                environment_name: prod
+            identifier: 904df446-10a7-4670-970c-8c0d05519554
+            inventory: null
+            job_tags: null
+            job_type: null
+            limit: null
+            natural_key:
+                identifier: 904df446-10a7-4670-970c-8c0d05519554
+                type: workflow_job_template_node
+                workflow_job_template:
+                    name: DEV / Release Application
+                        Version
+                    organization: null
+                    type: workflow_job_template
+            related:
+                always_nodes: []
+                credentials: []
+                failure_nodes: []
+                success_nodes:
+                -   identifier: db7db8e9-bb87-4549-ad3d-ce72f8470860
+                    type: workflow_job_template_node
+                    workflow_job_template:
+                        name: DEV / Release Application
+                            Version
+                        organization: null
+                        type: workflow_job_template
+            scm_branch: null
+            skip_tags: null
+            unified_job_template:
+                name: DEV / Set Application Version
+                organization:
+                    name: Default
+                    type: organization
+                type: job_template
+            verbosity: null
+            workflow_job_template:
+                name: DEV / Release Application Version
+                organization: null
+                type: workflow_job_template
+        -   all_parents_must_converge: false
+            diff_mode: null
+            extra_data:
+                target_hosts: prod
+            identifier: abfa6fa5-4e7e-4cce-9c4a-df2576dcb1d0
+            inventory: null
+            job_tags: null
+            job_type: null
+            limit: null
+            natural_key:
+                identifier: abfa6fa5-4e7e-4cce-9c4a-df2576dcb1d0
+                type: workflow_job_template_node
+                workflow_job_template:
+                    name: DEV / Release Application
                         Version
                     organization: null
                     type: workflow_job_template
@@ -398,23 +402,23 @@ workflow_job_templates:
                 type: job_template
             verbosity: null
             workflow_job_template:
-                name: DEV / Roll out Application Version
+                name: DEV / Release Application Version
                 organization: null
                 type: workflow_job_template
         -   all_parents_must_converge: false
             diff_mode: null
             extra_data:
-                target_hosts: prod
-            identifier: 70beab79-4238-4e3d-a396-5629c28be358
+                target_hosts: dev
+            identifier: 0dd94dbb-e30e-4273-9dc8-ffba7cbb1674
             inventory: null
             job_tags: null
             job_type: null
             limit: null
             natural_key:
-                identifier: 70beab79-4238-4e3d-a396-5629c28be358
+                identifier: 0dd94dbb-e30e-4273-9dc8-ffba7cbb1674
                 type: workflow_job_template_node
                 workflow_job_template:
-                    name: DEV / Roll out Application
+                    name: DEV / Release Application
                         Version
                     organization: null
                     type: workflow_job_template
@@ -423,10 +427,10 @@ workflow_job_templates:
                 credentials: []
                 failure_nodes: []
                 success_nodes:
-                -   identifier: e6ef5db9-aa94-405c-ac5d-4dbc54806c04
+                -   identifier: 18260938-f807-4406-9c82-2c182c123b79
                     type: workflow_job_template_node
                     workflow_job_template:
-                        name: DEV / Roll out Application
+                        name: DEV / Release Application
                             Version
                         organization: null
                         type: workflow_job_template
@@ -440,7 +444,7 @@ workflow_job_templates:
                 type: job_template
             verbosity: null
             workflow_job_template:
-                name: DEV / Roll out Application Version
+                name: DEV / Release Application Version
                 organization: null
                 type: workflow_job_template
     scm_branch: ''

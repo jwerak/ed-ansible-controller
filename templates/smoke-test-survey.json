@@ -1,6 +1,6 @@
 {
-    "name": "Deploy podman app",
-    "description": "Survey for Deployment of a Podman Application",
+    "name": "Smoke Test survey",
+    "description": "Survey for Smoke Test of a Podman Application",
     "spec": [
         {
             "type": "text",
